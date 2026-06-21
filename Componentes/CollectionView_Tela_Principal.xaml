@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Model="clr-namespace:MinhaMoto.Models"
+             xmlns:viewModel="clr-namespace:MinhaMoto.ViewModel"
+             Loaded="ContentView_Loaded"
+             x:Class="MinhaMoto.Componentes.CollectionView_Tela_Principal">
+    
+    <CollectionView ItemsSource="{Binding ListaVeiculos}"
+                 x:Name="Conteudo"
+                 Margin="0,20"
+                 Grid.Row="2"
+                 HorizontalOptions="Center">
+
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="Model:Veiculo">
+                <SwipeView>
+
+                    <SwipeView.RightItems>
+                        <SwipeItem Text="Excluir"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:PrincipalViewModel}},Path=DeletarCommand}"
+                                CommandParameter="{Binding .}"
+                                BackgroundColor="Red"/>
+                    </SwipeView.RightItems>
+
+                    <Border HeightRequest="95"                                
+                         Stroke="Black"
+                         StrokeShape="RoundRectangle 15"
+                         Background="White"
+                         WidthRequest="400"
+                         HorizontalOptions="Center"
+                         Padding="10">
+
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}" 
+                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:PrincipalViewModel}},Path=TelaListaDeServicoCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="0.2*,0.3*,0.5*" RowDefinitions="*,*">
+                            <Image Source="{Binding Icon}"
+                                Grid.RowSpan="2"
+                                HeightRequest="60"
+                                WidthRequest="60"/>
+
+                            <Label Text="Modelo :"
+                                Grid.Column="1"
+                                TextColor="Black"/>
+
+                            <Label Text="{Binding Nome}"                                      
+                                TextColor="Black"
+                                Grid.Column="2"/>
+                            <Label Text="Ano :"
+                                 Grid.Column="1"
+                                TextColor="Black"
+                                Grid.Row="1"/>
+
+                            <Label Text="{Binding Ano}"
+                                TextColor="Black"
+                                Grid.Column="2"
+                                Grid.Row="1"/>
+                        </Grid>
+                    </Border>
+
+                </SwipeView>
+
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentView>

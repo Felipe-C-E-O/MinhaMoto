@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MinhaMoto.ViewModel"
+             x:DataType="viewModel:ListaServicoViewModel"
+             xmlns:models="clr-namespace:MinhaMoto.Models"
+             Shell.NavBarIsVisible="True"
+             Shell.ForegroundColor="White"
+             Shell.BackgroundColor="DarkBlue"
+             x:Class="MinhaMoto.Pages.Tela_ListaDeServico">
+    
+    <Grid RowDefinitions="0.4*,0.8*">
+        <!-- Cabeçario -->
+        <Border BackgroundColor="DarkBlue"
+                x:Name="Cabecario"
+                StrokeThickness="0"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 0,0,30,30">
+            <Border.Shadow>
+                <Shadow Brush="Gray"/>
+            </Border.Shadow>
+
+            <Grid RowDefinitions="auto,*"
+                  ColumnDefinitions="*,auto">
+                
+                <Label Text="Serviços"
+                       HorizontalOptions="Center"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="35"/>
+                <Image Source="engrena.png"
+                       Grid.RowSpan="2"
+                       Opacity="0.2"
+                       HorizontalOptions="Center"
+                       HeightRequest="250"
+                       WidthRequest="250"/>
+                <VerticalStackLayout Grid.Row="1">
+                    <Image Source="{Binding VeiculoRecebido.Icon}"
+                           HeightRequest="80"
+                           WidthRequest="80"/>
+                    <Label Text="Veiculo"
+                           FontSize="18"
+                           TextColor="LightGray"
+                           HorizontalOptions="Center"/>
+                    <Label Text="{Binding VeiculoRecebido.Nome}"
+                           FontSize="25"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Ano"
+                           FontSize="18"
+                           TextColor="LightGray"
+                           HorizontalOptions="Center"/>
+                    <Label Text="{Binding VeiculoRecebido.Ano}"
+                           FontSize="25"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+        
+        <!-- Dados -->
+        <CollectionView ItemsSource="{Binding ListaServicoDoVeiculo}"
+                        SelectionMode="Single"
+                        x:Name="CV_servicos"
+                        SelectionChangedCommand="{Binding GoToEditarServicoCommand}"
+                        SelectionChangedCommandParameter="{Binding SelectedItem,Source={Reference CV_servicos}}"
+                        Margin="0,30"
+                        Grid.Row="1">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Servico">
+                    <VerticalStackLayout>
+                        <Border HeightRequest="60"
+                                StrokeShape="RoundRectangle 15"
+                                Background="White"
+                                Stroke="Black">
+                                  
+                            <Grid ColumnDefinitions="*,*">
+
+                                <Label Text="{Binding Data , StringFormat='{0:dd/MM/yyyy}'}"
+                                       HorizontalOptions="Center"
+                                       FontAttributes="Bold"
+                                       FontSize="Large"
+                                       VerticalOptions="Center"/>
+                                
+                                <Label Text="{Binding Descricao}"
+                                       Grid.Column="1"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       FontSize="25"
+                                       FontAttributes="Bold"/>
+                            </Grid>
+
+                        </Border>
+                    </VerticalStackLayout>
+                </DataTemplate> 
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        
+        
+        <Button Text="+ Serviço"
+                Background="DarkBlue"
+                VerticalOptions="End"
+                Command="{Binding GoTelaRegistrarServicoCommand}"
+                HorizontalOptions="End"
+                HeightRequest="70"
+                WidthRequest="120"
+                Margin="0,0,40,60"
+                Grid.RowSpan="2">
+                 
+        </Button>
+        
+
+    </Grid>
+</ContentPage>

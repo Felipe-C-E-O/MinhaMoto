@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MinhaMoto.Pages.Principal"
+             xmlns:viewModel="clr-namespace:MinhaMoto.ViewModel"
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewModel:PrincipalViewModel"           
+             xmlns:componentes="clr-namespace:MinhaMoto.Componentes"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"             
+             xmlns:Model="clr-namespace:MinhaMoto.Models">
+    
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior
+            StatusBarColor="DarkBlue"
+            StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
+
+    
+    <Grid RowDefinitions="0.4*,auto,*" RowSpacing="10">
+        
+        <Border BackgroundColor="DarkBlue"
+                StrokeThickness="0"
+                x:Name="Cabecario"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 0,0,30,30">
+            
+         
+            
+            <Grid RowDefinitions="0.7*,0.3*" Padding="20">
+                <Label x:Name="Titulo"                     
+                       FontSize="25"
+                       FontAttributes="Bold"
+                       VerticalOptions="End"
+                       TextColor="White"
+                       HorizontalOptions="Start"/>
+                
+                <Image Source="engrena.png"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"
+                       Grid.RowSpan="2"
+                       Opacity="0.8"
+                       WidthRequest="180"
+                       HeightRequest="180"/>
+            </Grid>
+            
+        </Border>
+
+        <Grid ColumnDefinitions="*,*,*"                               
+                               Grid.Row="1">
+            <componentes:BorderButton
+                        Command="{Binding TelaCadastrarVeiculoCommand}"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"/>
+           
+        </Grid>
+        <Grid Grid.Row="2" x:Name="Container">
+            
+        </Grid>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" VerticalOptions="Center" Grid.Row="2"/>
+
+    </Grid>
+   
+</ContentPage>

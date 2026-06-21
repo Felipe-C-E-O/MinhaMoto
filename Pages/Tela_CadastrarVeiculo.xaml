@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MinhaMoto.ViewModel"
+             x:DataType="viewModel:AdicionarVeiculoViewModel"
+             Shell.BackgroundColor="DarkBlue"
+             Shell.TitleColor="White"
+             Shell.ForegroundColor="White"
+             x:Class="MinhaMoto.Pages.Tela_CadastrarVeiculo"
+             Title="Tela Cadastrar Veiculo">
+    <Grid>
+        
+    
+    <Border StrokeShape="RoundRectangle 35"
+            VerticalOptions="Center"
+            x:Name="Formulario"            
+            WidthRequest="350"
+            HeightRequest="500"
+            Background="White">
+       
+        <VerticalStackLayout Spacing="20" Padding="20">
+            <Label Text="Novo Veiculo"
+                   FontAttributes="Bold"
+                   FontSize="25"
+                   HorizontalOptions="Center"/>
+            <Border
+                Padding="5"
+                StrokeShape="RoundRectangle 20"
+                HeightRequest="60">
+                <Entry
+                    Text="{Binding Nome , Mode=TwoWay}"
+                    Placeholder="Nome do Veiculo"/>
+
+            </Border>
+            <Border
+                Padding="5"
+                StrokeShape="RoundRectangle 20"
+                HeightRequest="60">
+                <Entry 
+                    Placeholder="Ano do Veiculo"
+                    Keyboard="Numeric"
+                    Text="{Binding Ano , Mode=TwoWay}"/>
+
+            </Border>
+                <Label Text="Selecione o Icone do Veiculo"/>
+                <CollectionView ItemsSource="{Binding ListaDeVeiculos}"
+                                SelectedItem="{Binding Icon}"
+                                SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Horizontal"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <Image Source="{Binding .}"
+                                   HeightRequest="50"
+                                   WidthRequest="50"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            
+            <Button Text="Salvar"                    
+                    Command="{Binding SalvarCommand}"
+                    TextColor="#004A77"
+                    BackgroundColor="#A8D7F7"/>
+        </VerticalStackLayout>
+    </Border>
+    </Grid>
+
+</ContentPage>

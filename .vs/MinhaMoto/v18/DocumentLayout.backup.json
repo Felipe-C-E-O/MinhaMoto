@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\GIT_Projetos\\MinhaMoto\\MinhaMoto\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6358D448-E770-BAA8-4281-1485C6AF6EFA}|MinhaMoto.csproj|e:\\git_projetos\\minhamoto\\minhamoto\\pages\\tela_listadeservico.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6358D448-E770-BAA8-4281-1485C6AF6EFA}|MinhaMoto.csproj|solutionrelative:pages\\tela_listadeservico.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Tela_ListaDeServico.xaml",
+              "DocumentMoniker": "E:\\GIT_Projetos\\MinhaMoto\\MinhaMoto\\Pages\\Tela_ListaDeServico.xaml",
+              "RelativeDocumentMoniker": "Pages\\Tela_ListaDeServico.xaml",
+              "ToolTip": "E:\\GIT_Projetos\\MinhaMoto\\MinhaMoto\\Pages\\Tela_ListaDeServico.xaml",
+              "RelativeToolTip": "Pages\\Tela_ListaDeServico.xaml",
+              "ViewState": "AgIAACYAAAAAAAAAAAAQwDwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-06-11T00:59:54.129Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="this"
+             x:Class="MinhaMoto.Componentes.BorderButton">
+    <Border            
+            Background="DarkBlue"                 
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 15"           
+            HeightRequest="70"
+            WidthRequest="120">
+       
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            <TapGestureRecognizer Command="{Binding Command ,Source={Reference  this}}"/>
+        </Border.GestureRecognizers>
+
+        <HorizontalStackLayout Spacing="5" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="+"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="35"/>
+            <Label Text="Veiculo"
+                VerticalOptions="Center"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="15"/>
+        </HorizontalStackLayout>
+    </Border>
+</ContentView>

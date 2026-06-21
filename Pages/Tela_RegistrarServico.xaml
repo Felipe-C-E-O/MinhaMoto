@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MinhaMoto.Pages.Tela_RegistrarServico"
+             xmlns:viewModel="clr-namespace:MinhaMoto.ViewModel"             
+             x:DataType="viewModel:RegistrarServicoViewModel"
+             xmlns:Model="clr-namespace:MinhaMoto.Models"
+             Title="Voltar">
+    
+    <Grid RowDefinitions="auto , *">
+        
+
+        <Border StrokeShape="RoundRectangle 35"
+                VerticalOptions="Start"
+                x:Name="Formulario"            
+                WidthRequest="400"
+                HeightRequest="350"
+                Background="White">
+            
+            
+            <Grid RowDefinitions="AUTO,AUTO,*"
+                  ColumnDefinitions="*,auto"
+                  RowSpacing="20"
+                  Padding="20">
+
+                <Image Source="excluir.png"
+                       VerticalOptions="Start"
+                       IsVisible="{Binding BotaoAtivo}"
+                       HeightRequest="40"
+                       WidthRequest="40"
+                       Grid.Column="1">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ExcluirCommad}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                
+                <Image Source="engrenagem.png"
+                       HeightRequest="250"
+                       Grid.ColumnSpan="2"
+                       Grid.RowSpan="3"
+                       Opacity="0.2"/>
+                
+                <Label Text="Serviço"
+                       Grid.ColumnSpan="2"
+                       FontAttributes="Bold"
+                       FontSize="25"
+                       HorizontalOptions="Center"/>
+                
+                <Border Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Padding="5"
+                        StrokeShape="RoundRectangle 20"
+                        HeightRequest="60">
+                    <Entry
+                        Text="{Binding Descricao , Mode=TwoWay}"
+                        Placeholder="Descrição"/>
+
+                </Border>
+                
+                <DatePicker Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Date="{Binding Data , Mode=TwoWay}"
+                            HorizontalOptions="Fill"
+                            FontAttributes="Bold"
+                            VerticalOptions="Start"/>
+
+
+                <Button Text="+ Material"
+                        Grid.ColumnSpan="2"
+                        Command="{Binding GoToCadastrarMaterialCommand}"
+                        IsVisible="{Binding BotaoAtivo}"
+                        Grid.RowSpan="3"
+                        HorizontalOptions="Start"
+                        VerticalOptions="End"
+                        HeightRequest="50"
+                        WidthRequest="120"/>
+                
+                <Button Text="Novo Serviço"
+                        Grid.ColumnSpan="2"
+                        Command="{Binding SalvarServicoCommand}"
+                        Grid.RowSpan="3"
+                        HorizontalOptions="End"
+                        VerticalOptions="End"
+                        HeightRequest="50"
+                        WidthRequest="120"/>
+                <Button Text="Salvar"
+                        IsVisible="{Binding BotaoAtivo}"
+                        Grid.ColumnSpan="2"
+                        Command="{Binding SalvarServicoCommand}"
+                        Grid.RowSpan="3"
+                        HorizontalOptions="End"
+                        VerticalOptions="End"
+                        HeightRequest="50"
+                        WidthRequest="120"/>
+                
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" RowDefinitions="auto ,*" RowSpacing="10">
+            <Label Text="Materiais"
+                   IsVisible="{Binding BotaoAtivo}"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   HorizontalOptions="Center"/>
+            <!-- Conteudo -->
+            <CollectionView Grid.Row="1" ItemsSource="{Binding ListaMaterial}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="Model:MaterialServico">
+                        <Border HeightRequest="50"
+                                StrokeShape="RoundRectangle 15">
+                            <Grid ColumnDefinitions="auto,auto,auto,auto,auto,auto"
+                                  HorizontalOptions="Center"
+                                  ColumnSpacing="20"
+                                  Padding="5"
+                                  VerticalOptions="Center">
+                                <Label Text="OS : "/>
+                                <Label Text="{Binding IdServico}"
+                                       HorizontalOptions="Start"
+                                       Grid.Column="1"/>
+
+                                <Label Text="Material: "
+                                        HorizontalOptions="Start"
+                                       Grid.Column="2"/>
+                                <Label Text="{Binding Nome}"
+                                        HorizontalOptions="Start"
+                                       Grid.Column="3"/>
+
+                                <Label Text="Quantidade:"
+                                        HorizontalOptions="Start"
+                                        Grid.Column="4"/>
+                                <Label Text="{Binding Quantidade}"
+                                        HorizontalOptions="Center"
+                                       Grid.Column="5"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+       
+    </Grid>
+</ContentPage>
