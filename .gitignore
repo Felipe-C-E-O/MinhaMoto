@@ -1,3 +1,4 @@
 # Ignorar pastas de Compilação e temporarias do .net
 bin/
 obj/
+/.vs/
